@@ -10,4 +10,5 @@ To build all the components, run 'gmake build' and wait for all the components t
 You may see warning or errors during this stage: if the build continues, don't mind them.
 
 You may now create the deployment war with 'gmake deploy'.
+
 The deployment war can be found in components/webtop-webapp/target
