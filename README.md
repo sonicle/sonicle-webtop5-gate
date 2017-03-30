@@ -1,6 +1,8 @@
 # Sonicle Webtop 5 build environment
 Use this to build all the WebTop 5 repositories and produce the war file for deployment.
 
+Requirements for the build are git and mvn.
+
 The Makefile has 5 possible targets: clone, update, clean, build and deploy.
 
 Start cloning all the WebTop5 repositories with 'gmake clone'.
