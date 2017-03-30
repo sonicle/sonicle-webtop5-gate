@@ -155,7 +155,7 @@ clean:
 	 done; \
 	)
 
-build: workspace-tools prepare $(COMPONENT_DIRS)
+build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS)
 
 $(TOOL_DIRS): FORCE
 	@( \
