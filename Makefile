@@ -157,6 +157,16 @@ clean:
 
 build: workspace-tools prepare $(COMPONENT_DIRS)
 
+$(TOOL_DIRS): FORCE
+	@( \
+	 CMD="$(MVN) install"; \
+	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
+	 if [ "x$$BUILD_PROFILE" != "x" ]; then \
+		BUILD_PROFILE="-P $$BUILD_PROFILE"; \
+	 fi; \
+	 cd components/$@ && echo "$@ : $$CMD $$BUILD_PROFILE" && $$CMD $$BUILD_PROFILE \
+	)
+
 $(COMPONENT_DIRS): FORCE
 	@( \
 	 CMD="$(MVN) install"; \
