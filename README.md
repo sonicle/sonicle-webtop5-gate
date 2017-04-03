@@ -17,8 +17,8 @@ You may now create the deployment war with 'gmake deploy'.
 
 Create a postgres database and initialize it with the following sql files:
 
-[init-config.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-config.sql)\s\s
-[init-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-core.sql)\s\s
+[init-config.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-config.sql)  
+[init-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-core.sql)  
 [init-public.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-public.sql)\s\s
 [init-calendar.sql](https://github.com/sonicle-webtop/webtop-calendar/blob/master/src/main/resources/com/sonicle/webtop/calendar/meta/db/init-calendar.sql)\s\s
 [init-contacts.sql](https://github.com/sonicle-webtop/webtop-contacts/blob/master/src/main/resources/com/sonicle/webtop/contacts/meta/db/init-contacts.sql)\s\s
