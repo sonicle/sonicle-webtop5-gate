@@ -5,10 +5,10 @@ Requirements for the build are git and mvn.
 
 The Makefile has 5 possible targets: clone, update, clean, build and deploy.
 
-Start cloning all the WebTop5 repositories with 'gmake clone'.\s\s
+Start cloning all the WebTop5 repositories with 'gmake clone'.  
 Then you periodically run 'gmake update' to fetch changes.
 
-To build all the components, run 'gmake build' and wait for all the components to be built.\s\s
+To build all the components, run 'gmake build' and wait for all the components to be built.  
 You may see warning or errors during this stage: if the build continues, don't mind them.
 
 You may now create the deployment war with 'gmake deploy'.
@@ -19,18 +19,18 @@ Create a postgres database and initialize it with the following sql files:
 
 [init-config.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-config.sql)  
 [init-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-core.sql)  
-[init-public.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-public.sql)\s\s
-[init-calendar.sql](https://github.com/sonicle-webtop/webtop-calendar/blob/master/src/main/resources/com/sonicle/webtop/calendar/meta/db/init-calendar.sql)\s\s
-[init-contacts.sql](https://github.com/sonicle-webtop/webtop-contacts/blob/master/src/main/resources/com/sonicle/webtop/contacts/meta/db/init-contacts.sql)\s\s
-[init-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-mail.sql)\s\s
-[init-tasks.sql](https://github.com/sonicle-webtop/webtop-tasks/blob/master/src/main/resources/com/sonicle/webtop/tasks/meta/db/init-tasks.sql)\s\s
-[init-vfs.sql](https://github.com/sonicle-webtop/webtop-vfs/blob/master/src/main/resources/com/sonicle/webtop/vfs/meta/db/init-vfs.sql)\s\s
+[init-public.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-public.sql)  
+[init-calendar.sql](https://github.com/sonicle-webtop/webtop-calendar/blob/master/src/main/resources/com/sonicle/webtop/calendar/meta/db/init-calendar.sql)  
+[init-contacts.sql](https://github.com/sonicle-webtop/webtop-contacts/blob/master/src/main/resources/com/sonicle/webtop/contacts/meta/db/init-contacts.sql)  
+[init-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-mail.sql)  
+[init-tasks.sql](https://github.com/sonicle-webtop/webtop-tasks/blob/master/src/main/resources/com/sonicle/webtop/tasks/meta/db/init-tasks.sql)  
+[init-vfs.sql](https://github.com/sonicle-webtop/webtop-vfs/blob/master/src/main/resources/com/sonicle/webtop/vfs/meta/db/init-vfs.sql)  
 
 Then fill it with initial data using the following sql files:
 
-[init-data-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-data-core.sql)\s\s
-[init-data-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-data-mail.sql)\s\s
-[init-data-vfs.sql](https://github.com/sonicle-webtop/webtop-vfs/blob/master/src/main/resources/com/sonicle/webtop/vfs/meta/db/init-data-vfs.sql)\s\s
+[init-data-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-data-core.sql)  
+[init-data-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-data-mail.sql)  
+[init-data-vfs.sql](https://github.com/sonicle-webtop/webtop-vfs/blob/master/src/main/resources/com/sonicle/webtop/vfs/meta/db/init-data-vfs.sql)  
 
 # Deployment
 
