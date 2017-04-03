@@ -13,4 +13,17 @@ You may see warning or errors during this stage: if the build continues, don't m
 
 You may now create the deployment war with 'gmake deploy'.
 
-The deployment war can be found in components/webtop-webapp/target
+# Database initialization
+
+Create a postgres database and initialize it with the following sql files:
+
+init-config.sql[https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-config.sql]
+
+# Deployment
+
+The deployment war can be found in components/webtop-webapp/target and can be deployed on Tomcat7/8
+or any other J2EE container supporting websocket.
+
+Before firing up the web application, 
+
+
