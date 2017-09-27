@@ -39,6 +39,7 @@ COMPONENT_DIRS += sonicle-commons-web
 COMPONENT_DIRS += sonicle-mail
 COMPONENT_DIRS += sonicle-security
 COMPONENT_DIRS += sonicle-vfs2
+COMPONENT_DIRS += sonicle-dav
 COMPONENT_DIRS += sonicle-superpom-senchapkg
 COMPONENT_DIRS += sonicle-jasperreports-fonts
 COMPONENT_DIRS += sonicle-extjs
