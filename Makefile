@@ -90,7 +90,7 @@ COMPONENTS_GIT_BASE_URL=https://github.com/sonicle-webtop
 COMPONENTS_GIT_SUFFIX=.git
 
 all:
-	@echo "Available targets: clone update clean build deploy"
+	@echo "Available targets: clone update build deploy"
 
 workspace-tools:
 	@(\
@@ -139,28 +139,11 @@ update: workspace-tools
 	 done; \
 	)
 
-clean:
-	@(\
-	 set -e; \
-	 if [ ! -d components ]; then \
-		echo "Nothing to be cleaned."; \
-		exit 0; \
-	 fi; \
-	 cd components; \
-	 for name in $(TOOL_DIRS) $(COMPONENT_DIRS) $(DEPLOY_DIRS); do \
-		cd $$name; \
-		CMD="$(MVN) clean"; \
-		echo "$$name : $$CMD"; \
-		$$CMD; \
-		cd ..; \
-	 done; \
-	)
-
 build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS)
 
 $(TOOL_DIRS): FORCE
 	@( \
-	 CMD="$(MVN) install"; \
+	 CMD="$(MVN) clean install"; \
 	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
 	 if [ "x$$BUILD_PROFILE" != "x" ]; then \
 		BUILD_PROFILE="-P $$BUILD_PROFILE"; \
@@ -170,7 +153,7 @@ $(TOOL_DIRS): FORCE
 
 $(COMPONENT_DIRS): FORCE
 	@( \
-	 CMD="$(MVN) install"; \
+	 CMD="$(MVN) clean install"; \
 	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
 	 if [ "x$$BUILD_PROFILE" != "x" ]; then \
 		BUILD_PROFILE="-P $$BUILD_PROFILE"; \
@@ -182,7 +165,7 @@ deploy: workspace-tools $(DEPLOY_DIRS)
 
 $(DEPLOY_DIRS): FORCE
 	@( \
-	 CMD="$(MVN) install"; \
+	 CMD="$(MVN) clean install"; \
 	 cd components/$@ && echo "$@ : $$CMD" && $$CMD \
 	)
 
