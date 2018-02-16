@@ -52,6 +52,7 @@ COMPONENT_DIRS += webtop-contacts-api
 COMPONENT_DIRS += webtop-mail-api
 COMPONENT_DIRS += webtop-tasks-api
 COMPONENT_DIRS += webtop-vfs-api
+COMPONENT_DIRS += webtop-drm-api
 COMPONENT_DIRS += webtop-core-db
 COMPONENT_DIRS += webtop-core
 COMPONENT_DIRS += webtop-superpom-service
@@ -60,6 +61,7 @@ COMPONENT_DIRS += webtop-contacts
 COMPONENT_DIRS += webtop-mail
 COMPONENT_DIRS += webtop-tasks
 COMPONENT_DIRS += webtop-vfs
+COMPONENT_DIRS += webtop-drm
 
 BUILD_PROFILE.webtop-core-db		= build-reports,profile-development
 BUILD_PROFILE.webtop-core		= build-reports,profile-development
@@ -76,6 +78,7 @@ BUILD_PROFILE.webtop-vfs		= build-reports,profile-development
 BUILD_PROFILE.webtop-vfs-api		= build-reports,profile-development
 
 BUILD_PROFILE.sonicle-extjs-extensions	= profile-production
+BUILD_PROFILE.webtop-webapp             = profile-production
 
 DEPLOY_DIRS += webtop-webapp
 
@@ -166,7 +169,11 @@ deploy: workspace-tools $(DEPLOY_DIRS)
 $(DEPLOY_DIRS): FORCE
 	@( \
 	 CMD="$(MVN) clean install"; \
-	 cd components/$@ && echo "$@ : $$CMD" && $$CMD \
+	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
+	 if [ "x$$BUILD_PROFILE" != "x" ]; then \
+	        BUILD_PROFILE="-P $$BUILD_PROFILE"; \
+	 fi; \
+	 cd components/$@ && echo "$@ : $$CMD $$BUILD_PROFILE" && $$CMD $$BUILD_PROFILE \
 	)
 
 prepare: workspace-tools FORCE
