@@ -33,7 +33,6 @@
 
 TOOL_DIRS += jasperreports-maven-plugin
 TOOL_DIRS += minify-maven-plugin
-
 COMPONENT_DIRS += sonicle-commons
 COMPONENT_DIRS += sonicle-commons-web
 COMPONENT_DIRS += sonicle-mail
@@ -62,25 +61,25 @@ COMPONENT_DIRS += webtop-mail
 COMPONENT_DIRS += webtop-tasks
 COMPONENT_DIRS += webtop-vfs
 COMPONENT_DIRS += webtop-drm
-
-BUILD_PROFILE.webtop-core-db		= build-reports,profile-development
-BUILD_PROFILE.webtop-core		= build-reports,profile-development
-BUILD_PROFILE.webtop-core-api		= build-reports,profile-development
-BUILD_PROFILE.webtop-calendar		= build-reports,profile-development
-BUILD_PROFILE.webtop-calendar-api	= build-reports,profile-development
-BUILD_PROFILE.webtop-contacts		= build-reports,profile-development
-BUILD_PROFILE.webtop-contacts-api	= build-reports,profile-development
-BUILD_PROFILE.webtop-mail		= build-reports,profile-development
-BUILD_PROFILE.webtop-mail-api		= build-reports,profile-development
-BUILD_PROFILE.webtop-tasks		= build-reports,profile-development
-BUILD_PROFILE.webtop-tasks-api		= build-reports,profile-development
-BUILD_PROFILE.webtop-vfs		= build-reports,profile-development
-BUILD_PROFILE.webtop-vfs-api		= build-reports,profile-development
-
-BUILD_PROFILE.sonicle-extjs-extensions	= profile-production
-BUILD_PROFILE.webtop-webapp             = profile-production
-
+COMPONENT_DIRS += webtop-mattermost
 DEPLOY_DIRS += webtop-webapp
+
+BUILD_PROFILE.webtop-core-db = build-reports,profile-development
+BUILD_PROFILE.webtop-core = build-reports,profile-development
+BUILD_PROFILE.webtop-core-api = build-reports,profile-development
+BUILD_PROFILE.webtop-calendar = build-reports,profile-development
+BUILD_PROFILE.webtop-calendar-api = build-reports,profile-development
+BUILD_PROFILE.webtop-contacts = build-reports,profile-development
+BUILD_PROFILE.webtop-contacts-api = build-reports,profile-development
+BUILD_PROFILE.webtop-mail = build-reports,profile-development
+BUILD_PROFILE.webtop-mail-api = build-reports,profile-development
+BUILD_PROFILE.webtop-tasks = build-reports,profile-development
+BUILD_PROFILE.webtop-tasks-api = build-reports,profile-development
+BUILD_PROFILE.webtop-vfs = build-reports,profile-development
+BUILD_PROFILE.webtop-vfs-api = build-reports,profile-development
+BUILD_PROFILE.webtop-mattermost = build-reports,profile-development
+BUILD_PROFILE.sonicle-extjs-extensions = profile-production
+BUILD_PROFILE.webtop-webapp = profile-production
 
 BUILD_DIR =	$(shell pwd)
 
