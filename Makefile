@@ -64,20 +64,20 @@ COMPONENT_DIRS += webtop-drm
 COMPONENT_DIRS += webtop-mattermost
 DEPLOY_DIRS += webtop-webapp
 
-BUILD_PROFILE.webtop-core-db = build-reports,profile-development
-BUILD_PROFILE.webtop-core = build-reports,profile-development
-BUILD_PROFILE.webtop-core-api = build-reports,profile-development
-BUILD_PROFILE.webtop-calendar = build-reports,profile-development
-BUILD_PROFILE.webtop-calendar-api = build-reports,profile-development
-BUILD_PROFILE.webtop-contacts = build-reports,profile-development
-BUILD_PROFILE.webtop-contacts-api = build-reports,profile-development
-BUILD_PROFILE.webtop-mail = build-reports,profile-development
-BUILD_PROFILE.webtop-mail-api = build-reports,profile-development
-BUILD_PROFILE.webtop-tasks = build-reports,profile-development
-BUILD_PROFILE.webtop-tasks-api = build-reports,profile-development
-BUILD_PROFILE.webtop-vfs = build-reports,profile-development
-BUILD_PROFILE.webtop-vfs-api = build-reports,profile-development
-BUILD_PROFILE.webtop-mattermost = build-reports,profile-development
+BUILD_PROFILE.webtop-core-db = build-reports,profile-production
+BUILD_PROFILE.webtop-core = build-reports,profile-production
+BUILD_PROFILE.webtop-core-api = build-reports,profile-production
+BUILD_PROFILE.webtop-calendar = build-reports,profile-production
+BUILD_PROFILE.webtop-calendar-api = build-reports,profile-production
+BUILD_PROFILE.webtop-contacts = build-reports,profile-production
+BUILD_PROFILE.webtop-contacts-api = build-reports,profile-production
+BUILD_PROFILE.webtop-mail = build-reports,profile-production
+BUILD_PROFILE.webtop-mail-api = build-reports,profile-production
+BUILD_PROFILE.webtop-tasks = build-reports,profile-production
+BUILD_PROFILE.webtop-tasks-api = build-reports,profile-production
+BUILD_PROFILE.webtop-vfs = build-reports,profile-production
+BUILD_PROFILE.webtop-vfs-api = build-reports,profile-production
+BUILD_PROFILE.webtop-mattermost = build-reports,profile-production
 BUILD_PROFILE.sonicle-extjs-extensions = profile-production
 BUILD_PROFILE.webtop-webapp = profile-production
 
@@ -96,9 +96,13 @@ all:
 
 workspace-tools:
 	@(\
-	 if [ ! -d sencha ]; then \
-		echo "Preparing workspace tools..."; \
-		tar jxf workspace-tools.tar.bz2; \
+	 if [ ! -d sencha/cmd ]; then \
+		echo "Preparing sencha cmd tools..."; \
+		tar jxf workspace-tools-cmd.tar.bz2; \
+	 fi; \
+	 if [ ! -d sencha/workspace ]; then \
+		echo "Preparing sencha workspace tools..."; \
+		tar jxf workspace-tools-workspace.tar.bz2; \
 	 fi; \
 	)
 
@@ -186,7 +190,7 @@ prepare: workspace-tools FORCE
 	 mkdir -p $$XBUILD_DIR; \
 	 ln -s $$XBUILD_DIR $$LBUILD_DIR; \
 	 mkdir -p $$HOME/.m2; \
-	 echo "sencha.cmd.v6=$(BUILD_DIR)/sencha/cmd/6.2.1.29" > $$HOME/.m2/sencha.properties; \
+	 echo "sencha.cmd.v6=$(BUILD_DIR)/sencha/cmd/6.7.0.63" > $$HOME/.m2/sencha.properties; \
 	 echo "sencha.workspace=$(BUILD_DIR)/sencha/workspace" >> $$HOME/.m2/sencha.properties; \
 	)
 
