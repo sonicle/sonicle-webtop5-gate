@@ -84,7 +84,7 @@ BUILD_PROFILE.webtop-webapp = profile-production
 BUILD_DIR =	$(shell pwd)
 
 GIT = /usr/bin/git
-MVN = /usr/bin/mvn -q
+MVN = /usr/bin/mvn -q -Dmaven.test.skip=true
 
 TOOLS_GIT_BASE_URL=https://github.com/sonicle
 TOOLS_GIT_SUFFIX=.git
