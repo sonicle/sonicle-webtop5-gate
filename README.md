@@ -19,7 +19,6 @@ Create a postgres database and initialize it with the following sql files:
 
 [init-config.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-config.sql)  
 [init-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-core.sql)  
-[init-public.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-public.sql)  
 [init-calendar.sql](https://github.com/sonicle-webtop/webtop-calendar/blob/master/src/main/resources/com/sonicle/webtop/calendar/meta/db/init-calendar.sql)  
 [init-contacts.sql](https://github.com/sonicle-webtop/webtop-contacts/blob/master/src/main/resources/com/sonicle/webtop/contacts/meta/db/init-contacts.sql)  
 [init-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-mail.sql)  
@@ -30,7 +29,6 @@ Then fill it with initial data using the following sql files:
 
 [init-data-core.sql](https://github.com/sonicle-webtop/webtop-core/blob/master/src/main/resources/com/sonicle/webtop/core/meta/db/init-data-core.sql)  
 [init-data-mail.sql](https://github.com/sonicle-webtop/webtop-mail/blob/master/src/main/resources/com/sonicle/webtop/mail/meta/db/init-data-mail.sql)  
-[init-data-vfs.sql](https://github.com/sonicle-webtop/webtop-vfs/blob/master/src/main/resources/com/sonicle/webtop/vfs/meta/db/init-data-vfs.sql)  
 
 # Deployment
 
