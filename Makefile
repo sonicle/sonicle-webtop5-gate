@@ -62,7 +62,8 @@ COMPONENT_DIRS += webtop-contacts
 COMPONENT_DIRS += webtop-mail
 COMPONENT_DIRS += webtop-tasks
 COMPONENT_DIRS += webtop-vfs
-COMPONENT_DIRS += webtop-mattermost
+#Not used anymore, verify build process completion when re-enabled
+#COMPONENT_DIRS += webtop-mattermost
 DEPLOY_DIRS += webtop-webapp
 
 BUILD_PROFILE.webtop-core-db = build-reports,profile-production
