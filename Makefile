@@ -53,7 +53,8 @@ COMPONENT_DIRS += webtop-contacts-api
 COMPONENT_DIRS += webtop-mail-api
 COMPONENT_DIRS += webtop-tasks-api
 COMPONENT_DIRS += webtop-vfs-api
-COMPONENT_DIRS += webtop-core-db
+#Since version 5.9.0 this component has been removed
+#COMPONENT_DIRS += webtop-core-db
 COMPONENT_DIRS += webtop-core
 COMPONENT_DIRS += webtop-superpom-service
 COMPONENT_DIRS += webtop-calendar
