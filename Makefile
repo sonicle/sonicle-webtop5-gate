@@ -64,6 +64,8 @@ COMPONENT_DIRS += webtop-tasks
 COMPONENT_DIRS += webtop-vfs
 #Not used anymore, verify build process completion when re-enabled
 #COMPONENT_DIRS += webtop-mattermost
+#Substitute this with your commercial components
+COMMERCIAL_DIRS += 
 DEPLOY_DIRS += webtop-webapp
 
 BUILD_PROFILE.webtop-core-db = build-reports,profile-production
@@ -92,6 +94,9 @@ TOOLS_GIT_BASE_URL=https://github.com/sonicle
 TOOLS_GIT_SUFFIX=.git
 COMPONENTS_GIT_BASE_URL=https://github.com/sonicle-webtop
 COMPONENTS_GIT_SUFFIX=.git
+#Substitute this with your commercial git base URL
+COMMERCIAL_GIT_BASE_URL=
+COMMERCIAL_GIT_SUFFIX=.git
 
 all:
 	@echo "Available targets: clone update build deploy"
@@ -124,6 +129,9 @@ clone: workspace-tools
 	 for name in $(COMPONENT_DIRS) $(DEPLOY_DIRS); do \
 		$(GIT) clone $(COMPONENTS_GIT_BASE_URL)/$$name$(COMPONENTS_GIT_SUFFIX); \
 	 done; \
+	 for name in $(COMMERCIAL_DIRS); do \
+		$(GIT) clone $(COMMERCIAL_GIT_BASE_URL)/$$name$(COMMERCIAL_GIT_SUFFIX); \
+	 done; \
 	)
 
 update: workspace-tools
@@ -140,16 +148,26 @@ update: workspace-tools
 		$(GIT) pull; \
 		cd ..; \
 	 done; \
-	 for name in $(COMPONENT_DIRS) $(DEPLOY_DIRS); do \
+	 for name in $(COMPONENT_DIRS) $(COMMERCIAL_DIRS) $(DEPLOY_DIRS); do \
 		cd $$name; \
 		$(GIT) pull; \
 		cd ..; \
 	 done; \
 	)
 
-build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS)
+build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS) $(COMMERCIAL_DIRS)
 
 $(TOOL_DIRS): FORCE
+	@( \
+	 CMD="$(MVN) clean install"; \
+	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
+	 if [ "x$$BUILD_PROFILE" != "x" ]; then \
+		BUILD_PROFILE="-P $$BUILD_PROFILE"; \
+	 fi; \
+	 cd components/$@ && echo "$@ : $$CMD $$BUILD_PROFILE" && $$CMD $$BUILD_PROFILE \
+	)
+
+$(COMPONENT_DIRS): FORCE
 	@( \
 	 CMD="$(MVN) clean install"; \
 	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
