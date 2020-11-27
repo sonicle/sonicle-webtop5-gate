@@ -31,42 +31,43 @@
 # display the words "Copyright (C) 2014 Sonicle S.r.l.".
 # 
 
-TOOL_DIRS += jasperreports-maven-plugin
-TOOL_DIRS += minify-maven-plugin
-TOOL_DIRS += sonicle-superpom
-COMPONENT_DIRS += sonicle-superpom-senchapkg
-COMPONENT_DIRS += sonicle-commons
-COMPONENT_DIRS += sonicle-commons-web
-COMPONENT_DIRS += sonicle-mail
-COMPONENT_DIRS += sonicle-security
-COMPONENT_DIRS += sonicle-dav
-COMPONENT_DIRS += sonicle-vfs2
-COMPONENT_DIRS += sonicle-jasperreports-fonts
-COMPONENT_DIRS += sonicle-extjs
-COMPONENT_DIRS += sonicle-extjs-extensions
-COMPONENT_DIRS += webtop-superpom
-COMPONENT_DIRS += webtop-superpom-core
-COMPONENT_DIRS += webtop-core-api
-COMPONENT_DIRS += webtop-superpom-service-api
-COMPONENT_DIRS += webtop-calendar-api
-COMPONENT_DIRS += webtop-contacts-api
-COMPONENT_DIRS += webtop-mail-api
-COMPONENT_DIRS += webtop-tasks-api
-COMPONENT_DIRS += webtop-vfs-api
-#Since version 5.9.0 this component has been removed
-#COMPONENT_DIRS += webtop-core-db
-COMPONENT_DIRS += webtop-core
-COMPONENT_DIRS += webtop-superpom-service
-COMPONENT_DIRS += webtop-calendar
-COMPONENT_DIRS += webtop-contacts
-COMPONENT_DIRS += webtop-mail
-COMPONENT_DIRS += webtop-tasks
-COMPONENT_DIRS += webtop-vfs
-#Not used anymore, verify build process completion when re-enabled
-#COMPONENT_DIRS += webtop-mattermost
-#Substitute this with your commercial components
-COMMERCIAL_DIRS += 
-DEPLOY_DIRS += webtop-webapp
+TOOL_DIRS = \
+ jasperreports-maven-plugin \
+ minify-maven-plugin \
+ sonicle-superpom
+
+COMPONENT_DIRS = \
+ sonicle-superpom-senchapkg \
+ sonicle-commons \
+ sonicle-commons-web \
+ sonicle-mail \
+ sonicle-security \
+ sonicle-dav \
+ sonicle-vfs2 \
+ sonicle-jasperreports-fonts \
+ sonicle-extjs \
+ sonicle-extjs-extensions \
+ webtop-superpom \
+ webtop-superpom-core \
+ webtop-core-api \
+ webtop-superpom-service-api \
+ webtop-calendar-api \
+ webtop-contacts-api \
+ webtop-mail-api \
+ webtop-tasks-api \
+ webtop-vfs-api \
+ webtop-core \
+ webtop-superpom-service \
+ webtop-calendar \
+ webtop-contacts \
+ webtop-mail \
+ webtop-tasks \
+ webtop-vfs
+
+#Substitute this with your external components
+EXT_COMPONENT_DIRS = 
+
+DEPLOY_DIRS = webtop-webapp
 
 BUILD_PROFILE.webtop-core-db = build-reports,profile-production
 BUILD_PROFILE.webtop-core = build-reports,profile-production
@@ -94,9 +95,9 @@ TOOLS_GIT_BASE_URL=https://github.com/sonicle
 TOOLS_GIT_SUFFIX=.git
 COMPONENTS_GIT_BASE_URL=https://github.com/sonicle-webtop
 COMPONENTS_GIT_SUFFIX=.git
-#Substitute this with your commercial git base URL
-COMMERCIAL_GIT_BASE_URL=
-COMMERCIAL_GIT_SUFFIX=.git
+#Substitute this with your external git base URL
+EXT_COMPONENTS_GIT_BASE_URL=
+EXT_COMPONENTS_GIT_SUFFIX=.git
 
 all:
 	@echo "Available targets: clone update build deploy"
@@ -129,8 +130,8 @@ clone: workspace-tools
 	 for name in $(COMPONENT_DIRS) $(DEPLOY_DIRS); do \
 		$(GIT) clone $(COMPONENTS_GIT_BASE_URL)/$$name$(COMPONENTS_GIT_SUFFIX); \
 	 done; \
-	 for name in $(COMMERCIAL_DIRS); do \
-		$(GIT) clone $(COMMERCIAL_GIT_BASE_URL)/$$name$(COMMERCIAL_GIT_SUFFIX); \
+	 for name in $(EXT_COMPONENT_DIRS); do \
+		$(GIT) clone $(EXT_COMPONENTS_GIT_BASE_URL)/$$name$(EXT_COMPONENTS_GIT_SUFFIX); \
 	 done; \
 	)
 
@@ -148,14 +149,14 @@ update: workspace-tools
 		$(GIT) pull; \
 		cd ..; \
 	 done; \
-	 for name in $(COMPONENT_DIRS) $(COMMERCIAL_DIRS) $(DEPLOY_DIRS); do \
+	 for name in $(COMPONENT_DIRS) $(EXT_COMPONENT_DIRS) $(DEPLOY_DIRS); do \
 		cd $$name; \
 		$(GIT) pull; \
 		cd ..; \
 	 done; \
 	)
 
-build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS) $(COMMERCIAL_DIRS)
+build: workspace-tools prepare $(TOOL_DIRS) $(COMPONENT_DIRS) $(EXT_COMPONENT_DIRS)
 
 $(TOOL_DIRS): FORCE
 	@( \
@@ -177,7 +178,7 @@ $(COMPONENT_DIRS): FORCE
 	 cd components/$@ && echo "$@ : $$CMD $$BUILD_PROFILE" && $$CMD $$BUILD_PROFILE \
 	)
 
-$(COMPONENT_DIRS): FORCE
+$(EXT_COMPONENT_DIRS): FORCE
 	@( \
 	 CMD="$(MVN) clean install"; \
 	 BUILD_PROFILE=$(BUILD_PROFILE.$@); \
