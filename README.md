@@ -1,3 +1,5 @@
+2022-01-24 This project has been replaced by the brand new: [webtop-gate](https://github.com/sonicle-webtop/webtop-gate)
+
 # Sonicle Webtop 5 build environment
 Use this to build all the WebTop 5 repositories and produce the war file for deployment.
 
